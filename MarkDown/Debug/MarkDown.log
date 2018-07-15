@@ -1,0 +1,7 @@
+﻿  Converter.cpp
+f:\vs17projects\markdown\markdown\converter.cpp(104): warning C4018: <: несоответствие типов со знаком и без знака
+f:\vs17projects\markdown\markdown\converter.cpp(128): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  Пропуск... (изменения не обнаружены)
+  MarkDown.cpp
+  MarkDown.vcxproj -> F:\VS17Projects\MarkDown\Debug\MarkDown.exe
