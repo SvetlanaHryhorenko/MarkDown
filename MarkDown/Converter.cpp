@@ -52,6 +52,7 @@ void Converter::convert(std::string s)
 
 void Converter::global_to_file()
 {
+	if (global.size() == 3) return;
 	bold(global);
 	italic(global);
 	global.append("</p>\n ");
@@ -90,7 +91,7 @@ bool Converter::headings()
 		current.insert(3, ">");
 		current.append("</h");
 		current.append(std::to_string(headings));
-		current.append(">");
+		current.append(">\n");
 		current_to_file();
 		return true;
 	}
@@ -184,7 +185,7 @@ void Converter::bullet_list()
 	if (current.empty()) return;
 	if ((current[0] == '*') && (current[1] == ' '))
 	{
-		if (!bullet) file<<"<ul>";
+		if (!bullet) file<<"<ul>\n";
 		bullet = true;
 		current.erase(current.begin(), current.begin()+1);
 		current.insert(0, "<li>");
@@ -192,7 +193,7 @@ void Converter::bullet_list()
 	}
 	else
 	{
-		if(bullet) file << "</ul>";
+		if(bullet) file << "</ul>\n";
 		bullet = false;
 	}
 }
@@ -202,7 +203,7 @@ void Converter::numbered_list()
 {
 	if (isdigit(current[0]) && (current[1] == '.') && (current[2] == ' '))
 	{
-		if (!numbered) file << "<ol>";
+		if (!numbered) file << "<ol>\n";
 		numbered = true;
 		current.erase(current.begin(), current.begin() + 2);
 		current.insert(0, "<li>");
@@ -210,7 +211,7 @@ void Converter::numbered_list()
 	}
 	else
 	{
-		if (numbered) file << "</ol>";
+		if (numbered) file << "</ol>\n";
 		numbered = false;
 	}
 }
